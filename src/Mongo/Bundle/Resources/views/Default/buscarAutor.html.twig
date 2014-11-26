@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Buscar por nombre{% endblock %}
+
+{% block body %}
+    <h1>Buscar autor por nombre:</h1>
+    {{form(form)}}
+    <br>
+    <a href="{{path('mongo_homepage')}}">Inicio</a>
+{% endblock %}

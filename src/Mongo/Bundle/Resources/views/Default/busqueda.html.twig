@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Resutados búsqueda{% endblock %}
+
+{% block body %}
+    <h1>Resultado de buscar: "{{busqueda}}"</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in result %}
+                <tr>
+                    <td>{{ autor.id }}</td>
+                    <td>{{ autor.nombre }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">No se ha encontrado ningún autor con la búsqueda realizada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('mongo_homepage') }}">Inicio</a>
+    <a href="{{ path('mongo_buscar_nombre') }}">Volver</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Resutados búsqueda{% endblock %}
+
+{% block body %}
+    <h1>Lista de todos los autores introducidos:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in result %}
+                <tr>
+                    <td>{{ autor.id }}</td>
+                    <td>{{ autor.nombre }}</td>
+                    <td><a href="{{path('mongo_eliminar', {'id':autor.id})}}">Eliminar</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No se ha encontrado ningún autor con la búsqueda realizada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('mongo_homepage') }}">Volver</a>
+{% endblock %}

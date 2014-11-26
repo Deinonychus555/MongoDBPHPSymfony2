@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Crear autor{% endblock %}
+
+{% block body %}
+    <h1>Formulario de creación de un autor:</h1>
+    {{form(form)}}
+    <br>
+    <a href="{{path('mongo_homepage')}}">Inicio</a>
+{% endblock %}
+

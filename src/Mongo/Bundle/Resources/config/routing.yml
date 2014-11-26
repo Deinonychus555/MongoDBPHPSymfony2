@@ -1,0 +1,19 @@
+mongo_homepage:
+    path:     /
+    defaults: { _controller: MongoBundle:Default:index }
+
+mongo_crear:
+    path: /crear
+    defaults: {_controller: MongoBundle:Default:crear}
+
+mongo_eliminar:
+    path: /eliminar/{id}
+    defaults: {_controller: MongoBundle:Default:eliminar, id: null}
+
+mongo_buscar_todos:
+    path: /ver_autores
+    defaults: {_controller: MongoBundle:Default:verAutores}
+
+mongo_buscar_nombre:
+    path: /buscar_nombre
+    defaults: {_controller: MongoBundle:Default:buscarNombre}
