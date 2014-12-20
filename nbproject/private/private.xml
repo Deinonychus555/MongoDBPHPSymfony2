@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/views/Default/crearAutor.html.twig</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/views/Default/index.html.twig</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/views/Default/busqueda.html.twig</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/views/Default/buscarAutor.html.twig</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Document/Autor.php</file>
-            <file>file:/C:/wamp/www/PracticaISI/src/Mongo/Bundle/Resources/views/Default/verAutores.html.twig</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

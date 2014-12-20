@@ -2,7 +2,7 @@
 
 namespace Mongo\Bundle\Controller;
 
-use Mongo\Bundle\Document\Autor;
+use Mongo\Bundle\Document\Author;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,17 +14,17 @@ class DefaultController extends Controller {
 
     public function crearAction(Request $request) {
         //Creamos un autor
-        $autor = new Autor();
+        $autor = new Author();
 
         //Creamos un formulario de symfony enlazado con el autor
         $form = $this->createFormBuilder($autor)
-                ->add("nombre", "text", array('label' => 'Escribe el nombre del autor', 'required' => true))
-                ->add("enviar", "submit", array('label' => 'Buscar'))
+                ->add("name", "text", array('label' => 'Escribe el nombre del autor', 'required' => true))
+                ->add("enviar", "submit", array('label' => 'Crear'))
                 ->getForm();
         //Unimos el request con el formulario para obtener los datos del autor
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //Obtenemos el Document Manager de MongoDB
             $dm = $this->get('doctrine_mongodb')->getManager();
             //Hacemos que el DM controle al autor
@@ -41,7 +41,7 @@ class DefaultController extends Controller {
 
     public function eliminarAction($id) {
         //Buscamos en el repositorio el id
-        $autor = $this->get("doctrine_mongodb")->getRepository("MongoBundle:Autor")->find($id);
+        $autor = $this->get("doctrine_mongodb")->getRepository("MongoBundle:Author")->find($id);
 
         if (!$autor) {
             return $this->createNotFoundException("No se ha encontrado el autor con id: " . $id);
@@ -58,7 +58,7 @@ class DefaultController extends Controller {
 
     public function verAutoresAction() {
         //Buscamos todos los autores
-        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:Autor")->findAll();
+        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:Author")->findBy(array(), array('id' => 'ASC'), 15, 200);
         //Mostramos la vista y pasamos el resultado.
         return $this->render("MongoBundle:Default:verAutores.html.twig", array('result' => $autores));
     }
@@ -66,23 +66,23 @@ class DefaultController extends Controller {
     public function buscarNombreAction(Request $request) {
         //Creamos un formulario de symfony
         $form = $this->createFormBuilder()
-                ->add("nombre", "text", array('label' => 'Escribe el nombre del autor', 'required' => true))
+                ->add("name", "text", array('label' => 'Escribe el nombre del autor', 'required' => true))
                 ->add("enviar", "submit", array('label' => 'Buscar'))
                 ->getForm();
         //Unimos el formulario con el request http que se ha generado
         $form->handleRequest($request);
 
         //Si se ha enviado el formulario y es válido
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //Obtenemos los datos del formulario
             $datos = $form->getData();
             //Obtenemos los datos del array en la posicion "nombre"
             $nombre = $datos['nombre'];
             //Buscamos el nombre en el repositorio de Autor
-            $autor = $this->get('doctrine_mongodb')->getRepository('MongoBundle:Autor')->findByNombre($nombre);
+            $autor = $this->get('doctrine_mongodb')->getRepository('MongoBundle:Author')->findByName($nombre);
             //Si no existe o es igual a NULL
             if (!$autor) {
-                return $this->createNotFoundException("No se ha encontrado el autor con el nombre: " . $nombre);
+                throw $this->createNotFoundException("No se ha encontrado el autor con el nombre: " . $nombre);
             }
             //Mostramos la vista con la tabla de resultados
             return $this->render("MongoBundle:Default:busqueda.html.twig", array('result' => $autor, 'busqueda' => $nombre));

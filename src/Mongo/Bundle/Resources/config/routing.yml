@@ -17,3 +17,10 @@ mongo_buscar_todos:
 mongo_buscar_nombre:
     path: /buscar_nombre
     defaults: {_controller: MongoBundle:Default:buscarNombre}
+listar_nodos:
+    path:     /listarNodos
+    defaults: { _controller: MongoBundle:Crawler:listarNodos }
+
+index:
+    path:     /index
+    defaults: { _controller: MongoBundle:Usuario:index }

@@ -43,17 +43,27 @@ assetic:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 #MongoDB
+#doctrine_mongodb:
+#    connections:
+#        default:
+#            server:       mongodb://localhost:27017
+#            options:
+#                connect:  true
+#    default_database:     PracticaISI
+#    document_managers:
+#        default:
+#            mappings:
+#                MongoBundle: ~
+
 doctrine_mongodb:
     connections:
         default:
-            server:       mongodb://localhost:27017
-            options:
-                connect:  true
-    default_database:     practica_isi
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: PracticaISI
     document_managers:
         default:
-            mappings:
-                MongoBundle: ~
+            auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:

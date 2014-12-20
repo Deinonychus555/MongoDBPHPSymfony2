@@ -25,8 +25,9 @@ class Autor {
      */
     protected $edad;
 
-    public function __construct($nombre = "") {
+    public function __construct($nombre = "", $edad = 0) {
         $this->nombre = $nombre;
+        $this->edad = $edad;
     }
 
     /**
@@ -56,6 +57,26 @@ class Autor {
      */
     public function getNombre() {
         return $this->nombre;
+    }
+
+    /**
+     * Set edad
+     *
+     * @param int $edad
+     * @return self
+     */
+    public function setEdad($edad) {
+        $this->edad = $edad;
+        return $this;
+    }
+
+    /**
+     * Get edad
+     *
+     * @return int $edad
+     */
+    public function getEdad() {
+        return $this->edad;
     }
 
 }

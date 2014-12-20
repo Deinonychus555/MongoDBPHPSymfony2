@@ -1,0 +1,30 @@
+<result>
+    <query id="2854">ce:venue:sigmap:* enrique* cabello*</query>
+    <status code="200">OK</status>
+    <time unit="msecs">0.53</time>
+    <completions total="1" computed="1" sent="1">
+        <c sc="500" dc="5" oc="5" id="809261">cabello</c>
+    </completions>
+    <suggestions computed="0" sent="0"></suggestions>
+    <hits total="5" computed="5" sent="5" first="0">
+        <hit score="402" id="1862129">
+            <info>
+                <authors>
+                    <author>Enrique Cabello</author>
+                    <author>Maria Virvou</author>
+                    <author>Mohammad S. Obaidat</author>
+                    <author>Hong Ji</author>
+                    <author>Petros Nicopolitidis</author>
+                    <author>Dimitrios D. Vergados</author>
+                </authors>
+                <title ee="">
+                    SIGMAP and WINSYS 2013 - Proceedings of the 10th International Conference on Signal Processing and Multimedia Applications and 10th International Conference on Wireless Information Networks and Systems, Reykjavík, Iceland, 29-31 July, 2013
+                </title>
+                <venue url="db/conf/sigmap/sigmap2013.html" conference="SIGMAP">SIGMAP 2013</venue>
+                <year>2013</year>
+                <type>proceedings</type>
+            </info>
+            <url>http://www.dblp.org/rec/bibtex/conf/sigmap/2013</url>
+        </hit>
+    </hits>
+</result>
