@@ -24,3 +24,7 @@ listar_nodos:
 index:
     path:     /index
     defaults: { _controller: MongoBundle:Usuario:index }
+
+mongo_authors_article:
+    path: /importantAuthors
+    defaults: { _controller: MongoBundle:Queries:importantAuthors}

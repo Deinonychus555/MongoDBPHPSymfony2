@@ -33,6 +33,12 @@ class Author {
     protected $cites = array();
 
     /**
+     *
+     * @MongoDB\ReferenceMany(targetDocument="Article", inversedBy="authors")
+     */
+    protected $articles = array();
+
+    /**
      * Get id
      *
      * @return id $id
@@ -79,6 +85,15 @@ class Author {
      */
     public function getCites() {
         return $this->cites;
+    }
+
+    function getArticles() {
+        return $this->articles;
+    }
+
+    function setArticles($articles) {
+        $this->articles = $articles;
+        return $this;
     }
 
 }

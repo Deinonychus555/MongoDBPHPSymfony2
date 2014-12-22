@@ -17,38 +17,38 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
  */
 class Article {
     //put your code here
-    
+
     /**
      * @MongoDB\Id
      */
     protected $id;
-    
+
     /**
      * @MongoDB\Collection
+     * @MongoDB\ReferenceMany(targetDocument="Author")
      */
     protected $authors = array();
-    
+
     /**
      * @MongoDB\String
      */
     protected $title;
-    
+
     /**
      * @MongoDB\Int
      */
     protected $year;
-    
+
     /**
      * @MongoDB\String
      */
     protected $journal;
-    
+
     /**
      * @MongoDB\String
      */
     protected $crossref;
-    
-    
+
     function getId() {
         return $this->id;
     }
@@ -102,6 +102,5 @@ class Article {
         $this->crossref = $crossref;
         return $this;
     }
-
 
 }
