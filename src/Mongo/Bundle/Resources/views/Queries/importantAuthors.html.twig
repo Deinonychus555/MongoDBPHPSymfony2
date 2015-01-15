@@ -1,9 +1,6 @@
-{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% block body %}
 
-Authors Articles
+    <h1>Important authors correctos. </h1>
 
-{#{%for articles in author%}#}
-{#{%for article in articles%}#}
-{#    {{ article.title }}<br>#}
-{#{% endfor %}#}
-{#{% endfor %}#}
+{% endblock %}

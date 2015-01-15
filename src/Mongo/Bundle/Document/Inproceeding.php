@@ -24,8 +24,8 @@ class Inproceeding {
     protected $id;
 
     /**
-     *
      * @MongoDB\Collection
+     * @MongoDB\ReferenceMany(targetDocument="Author")
      */
     protected $author = array();
 
@@ -53,14 +53,12 @@ class Inproceeding {
      */
     protected $crossref;
 
-
     /**
      * Get id
      *
      * @return id $id
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -70,8 +68,7 @@ class Inproceeding {
      * @param collection $author
      * @return self
      */
-    public function setAuthor($author)
-    {
+    public function setAuthor($author) {
         $this->author = $author;
         return $this;
     }
@@ -81,8 +78,7 @@ class Inproceeding {
      *
      * @return collection $author
      */
-    public function getAuthor()
-    {
+    public function getAuthor() {
         return $this->author;
     }
 
@@ -92,8 +88,7 @@ class Inproceeding {
      * @param string $title
      * @return self
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
         return $this;
     }
@@ -103,8 +98,7 @@ class Inproceeding {
      *
      * @return string $title
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -114,8 +108,7 @@ class Inproceeding {
      * @param int $year
      * @return self
      */
-    public function setYear($year)
-    {
+    public function setYear($year) {
         $this->year = $year;
         return $this;
     }
@@ -125,8 +118,7 @@ class Inproceeding {
      *
      * @return int $year
      */
-    public function getYear()
-    {
+    public function getYear() {
         return $this->year;
     }
 
@@ -136,8 +128,7 @@ class Inproceeding {
      * @param string $bookTitle
      * @return self
      */
-    public function setBookTitle($bookTitle)
-    {
+    public function setBookTitle($bookTitle) {
         $this->bookTitle = $bookTitle;
         return $this;
     }
@@ -147,8 +138,7 @@ class Inproceeding {
      *
      * @return string $bookTitle
      */
-    public function getBookTitle()
-    {
+    public function getBookTitle() {
         return $this->bookTitle;
     }
 
@@ -158,8 +148,7 @@ class Inproceeding {
      * @param string $crossref
      * @return self
      */
-    public function setCrossref($crossref)
-    {
+    public function setCrossref($crossref) {
         $this->crossref = $crossref;
         return $this;
     }
@@ -169,8 +158,32 @@ class Inproceeding {
      *
      * @return string $crossref
      */
-    public function getCrossref()
-    {
+    public function getCrossref() {
         return $this->crossref;
+    }
+
+    public function __construct()
+    {
+        $this->author = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function addAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author[] = $author;
+    }
+
+    /**
+     * Remove author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function removeAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author->removeElement($author);
     }
 }

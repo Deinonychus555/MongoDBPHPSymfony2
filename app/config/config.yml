@@ -48,7 +48,7 @@ doctrine_mongodb:
             server:       mongodb://localhost:27017
             options:
                 connect:  true
-    default_database:     PracticaISI
+    default_database:     BBDD_ISI
     document_managers:
         default:
             mappings:

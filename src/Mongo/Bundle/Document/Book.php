@@ -16,12 +16,6 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
  * @MongoDB\Document(collection="Books")
  */
 class Book {
-    /**
-     *  private ArrayList<String> editor = new ArrayList();
-      private ArrayList<String> author = new ArrayList();
-      private String title;
-      private int year;
-     */
 
     /**
      *
@@ -30,14 +24,8 @@ class Book {
     protected $id;
 
     /**
-     *
      * @MongoDB\Collection
-     */
-    protected $editor;
-
-    /**
-     *
-     * @MongoDB\Collection
+     * @MongoDB\ReferenceMany(targetDocument="Author")
      */
     protected $author;
 
@@ -53,14 +41,12 @@ class Book {
      */
     protected $year;
 
-
     /**
      * Get id
      *
      * @return id $id
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -70,8 +56,7 @@ class Book {
      * @param collection $editor
      * @return self
      */
-    public function setEditor($editor)
-    {
+    public function setEditor($editor) {
         $this->editor = $editor;
         return $this;
     }
@@ -81,8 +66,7 @@ class Book {
      *
      * @return collection $editor
      */
-    public function getEditor()
-    {
+    public function getEditor() {
         return $this->editor;
     }
 
@@ -92,8 +76,7 @@ class Book {
      * @param collection $author
      * @return self
      */
-    public function setAuthor($author)
-    {
+    public function setAuthor($author) {
         $this->author = $author;
         return $this;
     }
@@ -103,8 +86,7 @@ class Book {
      *
      * @return collection $author
      */
-    public function getAuthor()
-    {
+    public function getAuthor() {
         return $this->author;
     }
 
@@ -114,8 +96,7 @@ class Book {
      * @param string $title
      * @return self
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
         return $this;
     }
@@ -125,8 +106,7 @@ class Book {
      *
      * @return string $title
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -136,8 +116,7 @@ class Book {
      * @param int $year
      * @return self
      */
-    public function setYear($year)
-    {
+    public function setYear($year) {
         $this->year = $year;
         return $this;
     }
@@ -147,8 +126,32 @@ class Book {
      *
      * @return int $year
      */
-    public function getYear()
-    {
+    public function getYear() {
         return $this->year;
+    }
+
+    public function __construct()
+    {
+        $this->author = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function addAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author[] = $author;
+    }
+
+    /**
+     * Remove author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function removeAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author->removeElement($author);
     }
 }

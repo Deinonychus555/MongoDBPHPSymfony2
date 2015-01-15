@@ -3,6 +3,7 @@
 namespace Mongo\Bundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Mongo\Bundle\Document\Author;
 
 /**
  * Description of Article
@@ -49,58 +50,128 @@ class Article {
      */
     protected $crossref;
 
-    function getId() {
+    public function __construct() {
+        $this->authors = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getLengthAuthors() {
+        return (sizeof($this->authors->toArray()));
+    }
+
+    /**
+     * Get id
+     *
+     * @return id $id
+     */
+    public function getId() {
         return $this->id;
     }
 
-    function getAuthors() {
+    /**
+     * Add author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function addAuthor(\Mongo\Bundle\Document\Author $author) {
+        $this->authors[] = $author;
+    }
+
+    /**
+     * Remove author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function removeAuthor(\Mongo\Bundle\Document\Author $author) {
+        $this->authors->removeElement($author);
+    }
+
+    /**
+     * Get authors
+     *
+     * @return Doctrine\Common\Collections\Collection $authors
+     */
+    public function getAuthors() {
         return $this->authors;
     }
 
-    function getTitle() {
-        return $this->title;
-    }
-
-    function getYear() {
-        return $this->year;
-    }
-
-    function getJournal() {
-        return $this->journal;
-    }
-
-    function getCrossref() {
-        return $this->crossref;
-    }
-
-    function setId($id) {
-        $this->id = $id;
-        return $this;
-    }
-
-    function setAuthors($authors) {
-        $this->authors = $authors;
-        return $this;
-    }
-
-    function setTitle($title) {
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return self
+     */
+    public function setTitle($title) {
         $this->title = $title;
         return $this;
     }
 
-    function setYear($year) {
+    /**
+     * Get title
+     *
+     * @return string $title
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     * Set year
+     *
+     * @param int $year
+     * @return self
+     */
+    public function setYear($year) {
         $this->year = $year;
         return $this;
     }
 
-    function setJournal($journal) {
+    /**
+     * Get year
+     *
+     * @return int $year
+     */
+    public function getYear() {
+        return $this->year;
+    }
+
+    /**
+     * Set journal
+     *
+     * @param string $journal
+     * @return self
+     */
+    public function setJournal($journal) {
         $this->journal = $journal;
         return $this;
     }
 
-    function setCrossref($crossref) {
+    /**
+     * Get journal
+     *
+     * @return string $journal
+     */
+    public function getJournal() {
+        return $this->journal;
+    }
+
+    /**
+     * Set crossref
+     *
+     * @param string $crossref
+     * @return self
+     */
+    public function setCrossref($crossref) {
         $this->crossref = $crossref;
         return $this;
+    }
+
+    /**
+     * Get crossref
+     *
+     * @return string $crossref
+     */
+    public function getCrossref() {
+        return $this->crossref;
     }
 
 }

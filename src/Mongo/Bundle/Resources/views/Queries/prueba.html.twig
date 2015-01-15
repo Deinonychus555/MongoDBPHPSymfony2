@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ author.name }}'s articles<br>
+
+    <h1>ARTICLES</h1>
+    {%for article in articles %}
+        {{loop.index}}
+        {{ article.title }}<br>
+    {% endfor %}
+
+    {# <br>
+     <h1>INCOLLECTIONS</h1>
+     {%for incollection in incollections %}
+         {{loop.index}}
+         {{ incollection.title }}<br>
+     {% endfor %}
+
+     <br>
+     <h1>INPROCEEDINGS</h1>
+     {%for inproceeding in inproceedings %}
+         {{loop.index}}
+         {{ inproceeding.title }}<br>
+     {% endfor %}
+
+     <br>
+     <h1>BOOKS</h1>
+     {%for book in books %}
+         {{loop.index}}
+         {{ book.title }}<br>
+     {% endfor %}#}
+{% endblock %}

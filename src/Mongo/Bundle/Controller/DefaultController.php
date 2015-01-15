@@ -3,6 +3,7 @@
 namespace Mongo\Bundle\Controller;
 
 use Mongo\Bundle\Document\Author;
+use MongoCursor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -57,8 +58,12 @@ class DefaultController extends Controller {
     }
 
     public function verAutoresAction() {
+        ini_set('memory_limit', '3500M');
+        ini_set('max_execution_time', 300000);
+        MongoCursor::$timeout = -1;
+        set_time_limit(-1);
         //Buscamos todos los autores
-        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:Author")->findBy(array(), array('id' => 'ASC'), 15, 200);
+        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:Author")->findAll();
         //Mostramos la vista y pasamos el resultado.
         return $this->render("MongoBundle:Default:verAutores.html.twig", array('result' => $autores));
     }

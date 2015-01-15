@@ -17,37 +17,38 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
  */
 class Incollection {
     //put your code here
-    
+
     /**
      * @MongoDB\Id
      */
     protected $id;
-    
+
     /**
      * @MongoDB\Collection
+     * @MongoDB\ReferenceMany(targetDocument="Author")
      */
     protected $author = array();
-    
+
     /**
      * @MongoDB\String
      */
     protected $title;
-    
+
     /**
      * @MongoDB\String
      */
     protected $bookTitle;
-    
+
     /**
      * @MongoDB\String
      */
     protected $crossref;
-    
+
     /**
      * @MongoDB\Int
      */
     protected $year;
-    
+
     function getId() {
         return $this->id;
     }
@@ -102,5 +103,28 @@ class Incollection {
         return $this;
     }
 
+    public function __construct()
+    {
+        $this->author = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function addAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author[] = $author;
+    }
 
+    /**
+     * Remove author
+     *
+     * @param Mongo\Bundle\Document\Author $author
+     */
+    public function removeAuthor(\Mongo\Bundle\Document\Author $author)
+    {
+        $this->author->removeElement($author);
+    }
 }
