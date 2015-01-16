@@ -34,17 +34,22 @@ class QueriesController extends Controller {
     }
 
     public function importantAuthorsAction() {
+        ini_set('memory_limit', '3500M');
+        ini_set('max_execution_time', 300000);
+        MongoCursor::$timeout = -1;
+        set_time_limit(-1);
         $db = $this->get("doctrine_mongodb")->getManager();
-        set_time_limit(30000);
-        $dm = $this->get("doctrine_mongodb")->getManager();
-        $authors = $this->get("doctrine_mongodb")->getRepository('MongoBundle:Author')->findAll();
-        foreach ($authors as $author) {
-            if (!$author->isOccasional() && !$author->isNobel()) {
-                $important_author = new ImportantAuthor($author);
-                $db->persist($important_author);
+        for ($i = 0; $i < 1477550;) {
+            $authors = $this->get("doctrine_mongodb")->getRepository("MongoBundle:Author")->findBy(array(), array('id' => 'ASC'), 100000, $i);
+            foreach ($authors as $author) {
+                if (!$author->isOccasional() && !$author->isNobel()) {
+                    $important_author = new ImportantAuthor($author);
+                    $db->persist($important_author);
+                    $db->flush();
+                }
+                $i++;
             }
         }
-        $db->flush();
         return $this->render("MongoBundle:Queries:importantAuthors.html.twig");
     }
 
