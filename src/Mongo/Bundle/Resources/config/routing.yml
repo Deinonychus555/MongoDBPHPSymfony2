@@ -17,6 +17,7 @@ mongo_buscar_todos:
 mongo_buscar_nombre:
     path: /buscar_nombre
     defaults: {_controller: MongoBundle:Default:buscarNombre}
+    
 listar_nodos:
     path:     /listarNodos
     defaults: { _controller: MongoBundle:Crawler:listarNodos }
@@ -36,3 +37,41 @@ mongo_authors_article:
 mongo_sexenios:
     path: /sexenios
     defaults: {_controller: MongoBundle:Queries:sexenios }
+
+    
+mongo_table_authors:
+    path: /tableAuthors
+    defaults: {_controller: MongoBundle:Queries:tableAuthors }
+    
+    
+mongo_table_important_authors:
+    path: /tableImportantAuthors
+    defaults: {_controller: MongoBundle:Queries:tableImportantAuthors }
+    
+mongo_table_sexenios_authors:
+    path: /tableSexeniosAuthors
+    defaults: {_controller: MongoBundle:Queries:tableSexeniosAuthors } 
+    
+mongo_table_inadecuate_authors:
+    path: /tableInadecuateAuthors
+    defaults: {_controller: MongoBundle:Queries:tableInadecuateAuthors } 
+    
+mongo_table_unproductive_authors:
+    path: /tableUnproductiveAuthors
+    defaults: {_controller: MongoBundle:Queries:tableUnproductiveAuthors }    
+  
+mongo_table_traveller_authors:
+    path: /tableTravellerAuthors
+    defaults: {_controller: MongoBundle:Queries:tableTravellerAuthors } 
+    
+mongo_table_editor_authors:
+    path: /tableEditorAuthors
+    defaults: {_controller: MongoBundle:Queries:tableEditorAuthors }  
+    
+mongo_table_sociable_authors:
+    path: /tableSociableAuthors
+    defaults: {_controller: MongoBundle:Queries:tableSociableAuthors }
+    
+mongo_table_stable_authors:
+    path: /tableStableAuthors
+    defaults: {_controller: MongoBundle:Queries:tableStableAuthors }     
