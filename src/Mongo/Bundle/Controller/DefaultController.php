@@ -2,7 +2,7 @@
 
 namespace Mongo\Bundle\Controller;
 
-use Mongo\Bundle\Document\Author;
+use Mongo\Bundle\Document\ImportantAuthor;
 use MongoCursor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,7 +63,7 @@ class DefaultController extends Controller {
         MongoCursor::$timeout = -1;
         set_time_limit(-1);
         //Buscamos todos los autores
-        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:Author")->findAll();
+        $autores = $this->get('doctrine_mongodb')->getRepository("MongoBundle:ImportantAuthor")->findByIndiceSexenio(4);
         //Mostramos la vista y pasamos el resultado.
         return $this->render("MongoBundle:Default:verAutores.html.twig", array('result' => $autores));
     }

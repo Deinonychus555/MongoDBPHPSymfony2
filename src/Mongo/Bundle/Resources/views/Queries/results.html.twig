@@ -1,0 +1,292 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block titulo_pagina %}
+    <h1>
+        Results
+        <small>Control panel</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Result page</li>
+    </ol>
+{% endblock %}
+
+{% block contenido %}
+    <div class="row">
+        <div class="col-md-3  text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Importantes</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#3c8dbc" data-readonly="true"/>
+                    <div>(Autores importantes/Autores)*100</div>
+                </div>
+            </div>
+        </div>
+        {#<div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores con sexenio >= 2</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#00BFFF" data-readonly="true"/>
+                    <div>(Autores sexenios >= 2/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>#}
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Improductivos</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#04B404" data-readonly="true"/>
+                    <div>(Autores improductivos/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores inadecuados</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#41EC27" data-readonly="true"/>
+                    <div>(Autores inadecuados/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Viajeros</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#FE2E2E" data-readonly="true"/>
+                    <div>(Autores viajeros/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Redactores</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#E37500" data-readonly="true"/>
+                    <div>(Autores redactores/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje de autores viajes y redactores sobre los autores importantes</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="autores-viajeros-redactores" style="height: 200px; position: relative;"></div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Sociables</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#AC58FA" data-readonly="true"/>
+                    <div>(Autores sociables/Autores importantes)*100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje Autores Estables</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <input type="text" class="knob" value="30" data-width="170" data-height="175" data-fgColor="#FF7EE8" data-readonly="true"/>
+                    <div>(Autores estables/Autores)*100</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Porcentaje de autores sociables y estables sobre los autores importantes</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="autores-sociables-estables" style="height: 200px; position: relative;"></div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+    <!-- DONUT CHART -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Bar chart -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <h3 class="box-title">Bar Chart</h3>
+                </div>
+                <div class="box-body">
+                    <div id="bar-chart" style="height: 500px;"></div>
+                </div><!-- /.box-body-->
+            </div><!-- /.box -->
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="{{asset('js/plugins/morris/morris.js')}}" type="text/javascript"></script>
+    <!-- jQuery Knob -->
+    <script src="{{asset('js/plugins/jqueryKnob/jquery.knob.js')}}" type="text/javascript"></script>
+    <!-- Sparkline -->
+    <script src="{{asset('js/plugins/sparkline/jquery.sparkline.min.js')}}" type="text/javascript"></script>
+    <!-- FLOT CHARTS -->
+    <script src="{{asset('js/plugins/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
+    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+    <script src="{{asset('js/plugins/flot/jquery.flot.categories.min.js')}}" type="text/javascript"></script>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            var donut = new Morris.Donut({
+                element: 'autores-viajeros-redactores',
+                resize: true,
+                colors: ["#3c8dbc", "#f56954", "#00a65a"],
+                data: [
+                    {label: "viajeros", value: 12},
+                    {label: "redactores", value: 30},
+                    {label: "Resto autores", value: 20}
+                ],
+                hideHover: 'auto'
+            });
+            var donut = new Morris.Donut({
+                element: 'autores-sociables-estables',
+                resize: true,
+                colors: ["#3c8dbc", "#f56954", "#00a65a"],
+                data: [
+                    {label: "sociables", value: 12},
+                    {label: "estables", value: 30},
+                    {label: "Resto autores", value: 20}
+                ],
+                hideHover: 'auto'
+            });
+            /*
+             * BAR CHART
+             * ---------
+             */
+
+            var bar_data = {
+                data: [["Autores", 1477566], ["Importantes", 250000], ["Improductivos", 4], ["Inapropiados", 13], ["Viajeros", 17], ["Redactores", 9], ["Sociables", 9], ["Estables", 9]],
+                color: "#3c8dbc"
+            };
+            $.plot("#bar-chart", [bar_data], {
+                grid: {
+                    borderWidth: 1,
+                    borderColor: "#f3f3f3",
+                    tickColor: "#f3f3f3"
+                },
+                series: {
+                    bars: {
+                        show: true,
+                        barWidth: 0.75,
+                        align: "center"
+                    }
+                },
+                xaxis: {
+                    mode: "categories",
+                    tickLength: 0,
+                    font: {
+                        size: 14,
+                        lineHeight: 13,
+                        weight: "bold",
+                        family: "sans-serif",
+                        variant: "small-caps",
+                        color: "#545454"
+                    }
+                },
+            });
+            /* END BAR CHART */
+
+
+            $(".knob").knob({
+                /*change : function (value) {
+                 //console.log("change : " + value);
+                 },
+                 release : function (value) {
+                 console.log("release : " + value);
+                 },
+                 cancel : function () {
+                 console.log("cancel : " + this.value);
+                 },*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        var a = this.angle(this.cv)  // Angle
+                                , sa = this.startAngle          // Previous start angle
+                                , sat = this.startAngle         // Start angle
+                                , ea                            // Previous end angle
+                                , eat = sat + a                 // End angle
+                                , r = true;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        this.o.cursor
+                                && (sat = eat - 0.3)
+                                && (eat = eat + 0.3);
+
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value);
+                            this.o.cursor
+                                    && (sa = ea - 0.3)
+                                    && (ea = ea + 0.3);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.previousColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{#autores
+año
+articulos
+revistas
+improcedings
+incollection#}

@@ -2,7 +2,19 @@
 
 {% block title %}Inicio{% endblock %}
 
-{% block body %}
+{% block titulo_pagina %}
+    <h1>
+        Inicio
+        <small>Control panel</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Blank page</li>
+    </ol>
+{% endblock %}
+
+{% block contenido %}
     <h2>Bienvenido a la base de datos de autores con <strong>MongoDB:</strong></h2>
     <h3>Menú:</h3>
     <ul>
@@ -10,7 +22,6 @@
         <li><a href="{{path('mongo_buscar_todos')}}">Buscar todos</a></li>
         <li><a href="{{path('mongo_buscar_nombre')}}">Buscar un autor</a></li>
     </ul>
-
 {% endblock %}
 
 {#autores

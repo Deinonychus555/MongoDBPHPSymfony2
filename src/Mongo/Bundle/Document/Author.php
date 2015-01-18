@@ -17,7 +17,6 @@ use Mongo\Bundle\Document\Article;
 
 /**
  * @MongoDB\Document(collection="Authors")
- * @MongoDB\InheritanceType("COLLECTION_PER_CLASS")
  */
 class Author {
 
@@ -146,6 +145,26 @@ class Author {
 
     public function isEstable() {
         return ($this->getSocial() < $this->getCardinal());
+    }
+
+    public function getArticlesByYear($year) {
+        $contador = 0;
+        foreach ($this->articles as $article) {
+            if ($article->getYear() == $year) {
+                $contador++;
+            }
+        }
+        return $contador;
+    }
+
+    public function getInproceedingsByYear($year) {
+        $contador = 0;
+        foreach ($this->inproceedings as $inproceeding) {
+            if ($inproceeding->getYear() == $year) {
+                $contador++;
+            }
+        }
+        return $contador;
     }
 
     public function __construct() {

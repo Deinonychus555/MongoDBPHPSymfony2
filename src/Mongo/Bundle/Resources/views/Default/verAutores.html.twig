@@ -16,7 +16,7 @@
             {% for autor in result %}
                 <tr>
                     <td>{{ autor.id }}</td>
-                    <td>{{ autor.title }}</td>
+                    <td>{{ autor.name }}</td>
                     {#                    <td><a href="{{path('mongo_eliminar', {'id':autor.id})}}">Eliminar</a></td>#}
                 </tr>
             {% else %}

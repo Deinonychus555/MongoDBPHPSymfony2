@@ -48,7 +48,7 @@ doctrine_mongodb:
             server:       mongodb://localhost:27017
             options:
                 connect:  true
-    default_database:     BBDD_ISI
+    default_database:     BBDD_ISI_PRUEBAS
     document_managers:
         default:
             mappings:
