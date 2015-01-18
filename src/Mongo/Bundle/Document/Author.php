@@ -155,7 +155,7 @@ class Author {
             $grupal[] = $article->getLengthAuthors();
         }
         asort($grupal);
-        $pos = (sizeof($grupal) + 1) / 2;
+        $pos = (sizeof($grupal)) / 2;
         return $grupal[$pos];
     }
 
