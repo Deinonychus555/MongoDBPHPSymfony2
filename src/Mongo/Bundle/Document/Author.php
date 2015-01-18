@@ -72,7 +72,11 @@ class Author {
     }
 
     public function getAnnual() {
-        return ($this->getLengthList() / $this->getAge());
+        if ($this->getAge()==0){
+            return 0;
+        }else{
+            return ($this->getLengthList() / $this->getAge());
+        }
     }
 
     public function isInproductive() {
@@ -89,7 +93,11 @@ class Author {
 
     public function getAnnualJ() {
         $lengthJ = $this->getLengthJ();
-        return ($lengthJ / $this->getAge());
+        if($this->getAge() == 0){
+            return 0;
+        }else{
+            return ($lengthJ / $this->getAge());
+        }
     }
 
     public function isInadequate() {
@@ -105,11 +113,19 @@ class Author {
     }
 
     public function getRatioP() {
-        return ($this->getLengthP() / $this->getLengthList()) * 100;
+        if ($this->getLengthList() == 0){
+            return 0;
+        }else{
+            return ($this->getLengthP() / $this->getLengthList()) * 100;
+        }
     }
 
     public function getRatioJ() {
-        return ($this->getLengthJ() / $this->getLengthList()) * 100;
+        if ($this->getLengthList() == 0){
+            return 0;
+        }else{
+            return ($this->getLengthJ() / $this->getLengthList()) * 100;
+        }
     }
 
     public function isTraveller() {
@@ -126,7 +142,11 @@ class Author {
         foreach ($this->articles as $article) {
             $grupal += $article->getLengthAuthors();
         }
-        return ($grupal / $this->getLengthJ());
+        if ($this->getLengthJ() == 0){
+            return 0;
+        }else{
+            return ($grupal / $this->getLengthJ());
+        }
     }
 
     public function getCardinal() {
@@ -165,6 +185,125 @@ class Author {
             }
         }
         return $contador;
+    }
+    
+        public function boehm($indice, $repetidos){
+        
+        $indiceBoehm = 10000000;
+        
+        foreach ($this->articles as $article){
+            
+            foreach ($article->getAuthors() as $author){
+                
+                if ("Barry W. Boehm" == $author->getName()){
+                    
+                    if ($indice < $indiceBoehm){
+                        
+                        $indiceBoehm = $indice;
+                        
+                    }
+                    
+                }else if (!$this->getName() == $author->getName() && !in_in_array($author, $repetidos, true)){
+                    
+                    $indiceActual;
+                    array_push($repetidos, $this);
+                    $indiceActual = $author->boehm(++$indice, $repetidos);
+                    --$indice;
+                    
+                    if ($indiceBohem > $indiceActual){
+                        
+                        $indiceBohem = $indiceActual;
+                        
+                    }
+                    
+                }
+            }
+        }
+        foreach ($this->improceedings as $improceeding){
+            
+            foreach ($improceeding->getAuthors() as $author){
+                
+                if ("Barry W. Boehm" == $author->getName()){
+                    
+                    if ($indice < $indiceBoehm){
+                        
+                        $indiceBoehm = $indice;
+                        
+                    }
+                    
+                }else if (!$this->getName() == $author->getName() && !in_in_array($author, $repetidos, true)){
+                    
+                    $indiceActual;
+                    array_push($repetidos, $this);
+                    $indiceActual = $author->boehm(++$indice, $repetidos);
+                    --$indice;
+                    
+                    if ($indiceBohem > $indiceActual){
+                        
+                        $indiceBohem = $indiceActual;
+                        
+                    }
+                    
+                }
+            }
+        }
+        foreach ($this->books as $book){
+            
+            foreach ($book->getAuthors() as $author){
+                
+                if ("Barry W. Boehm" == $author->getName()){
+                    
+                    if ($indice < $indiceBoehm){
+                        
+                        $indiceBoehm = $indice;
+                        
+                    }
+                    
+                }else if (!$this->getName() == $author->getName() && !in_in_array($author, $repetidos, true)){
+                    
+                    $indiceActual;
+                    array_push($repetidos, $this);
+                    $indiceActual = $author->boehm(++$indice, $repetidos);
+                    --$indice;
+                    
+                    if ($indiceBohem > $indiceActual){
+                        
+                        $indiceBohem = $indiceActual;
+                        
+                    }
+                    
+                }
+            }
+        }
+        foreach ($this->incollections as $incollection){
+            
+            foreach ($incollection->getAuthors() as $author){
+                
+                if ("Barry W. Boehm" == $author->getName()){
+                    
+                    if ($indice < $indiceBoehm){
+                        
+                        $indiceBoehm = $indice;
+                        
+                    }
+                    
+                }else if (!$this->getName() == $author->getName() && !in_in_array($author, $repetidos, true)){
+                    
+                    $indiceActual;
+                    array_push($repetidos, $this);
+                    $indiceActual = $author->boehm(++$indice, $repetidos);
+                    --$indice;
+                    
+                    if ($indiceBohem > $indiceActual){
+                        
+                        $indiceBohem = $indiceActual;
+                        
+                    }
+                    
+                }
+            }
+        }
+        return $indiceBohem;
     }
 
     public function __construct() {
