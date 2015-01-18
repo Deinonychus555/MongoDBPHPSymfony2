@@ -1,0 +1,105 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block css %}
+
+    <link href="{{asset('css/datatables/dataTables.bootstrap.css')}}" rel="stylesheet" type="text/css" />
+    
+{% endblock %}
+
+
+
+{% block titulo_pagina %}
+    <h1>
+        Tabla de {{dataTable}}.
+        <small>Control panel</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Tabla de {{dataTable}}.</li>
+    </ol>
+{% endblock %}
+
+{% block contenido %}
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                       Tabla de {{dataTable}}.
+                    </h3>
+                </div>
+                    <div class="box-body table-responsive">
+                        <table id="authors-table" class="table table-bordered table-hover">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Min year</th>
+                                    <th>Max year</th>
+                                    <th>Articles</th>
+                                    <th>Books</th>
+                                    <th>Incollections</th>
+                                    <th>Inproceedings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for author in authors %}
+                                    <tr>
+                                        <td>{{author.id}}</td>
+                                        <td>{{author.name}}</td>
+                                        <td>{{author.minYear}}</td>
+                                        <td>{{author.maxYear}}</td>
+                                        <td>{{author.articles.count()}}</td>
+                                        <td>{{author.books.count()}}</td>
+                                        <td>{{author.incollections.count()}}</td>
+                                        <td>{{author.inproceedings.count()}}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8">
+                                            No se han encontrado autores.
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+     <!-- DATA TABES SCRIPT -->
+    <script src="{{asset('js/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/plugins/datatables/dataTables.bootstrap.js')}}" type="text/javascript"></script>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#authors-table').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+        });
+    </script>
+{% endblock %}
+
+{#autores
+año
+articulos
+revistas
+improcedings
+incollection#}
+
