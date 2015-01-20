@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Resources/views/data.html</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Controller/DataTablesController.php</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Document/ImportantAuthor.php</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Resources/views/DataTables/results.html.twig</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/app/Resources/views/base.html.twig</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Document/Author.php</file>
-            <file>file:/Library/WebServer/Documents/PracticaISI/src/Mongo/Bundle/Controller/QueriesController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
