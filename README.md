@@ -1,3 +1,8 @@
+#MongoDBPHPSymfony2
+
+Este programa en lenguaje PHP Symfony 2, sirve para procesar concretamente los datos almacenados en MongoDB mediante el programa https://github.com/Deinonychus555/SAXMongoDBMorphiaJava.
+
+
 Symfony Standard Edition
 ========================
 
