@@ -3,6 +3,16 @@
 Este programa en lenguaje PHP Symfony 2, sirve para hacer consultas, concretamente de los datos almacenados en MongoDB mediante el programa https://github.com/Deinonychus555/SAXMongoDBMorphiaJava.
 
 
+##### Referencias:
+* [**The DomCrawler Component**][14] 
+* [**Deserializing XML with JMSSerializerBundle in Symfony2**][15]
+* [**Componentes, el arma secreta de Symfony2**][16]
+* [**Symfony - Deserialize json to an array of entities**][17]
+* [**Symfony2 API - Classes**][18]
+
+
+
+
 Symfony Standard Edition
 ========================
 
@@ -173,3 +183,8 @@ Enjoy!
 [11]: http://symfony.com/doc/2.4/cookbook/logging/monolog.html
 [12]: http://symfony.com/doc/2.4/cookbook/assetic/asset_management.html
 [13]: http://symfony.com/doc/2.4/bundles/SensioGeneratorBundle/index.html
+[14]: http://symfony.com/doc/current/components/dom_crawler.html
+[15]: http://johnkary.net/blog/deserializing-xml-with-jms-serializer-bundle/
+[16]: http://es.slideshare.net/loalf/componentes-el-arma-secreta-de-symfony2
+[17]: http://stackoverflow.com/questions/23051554/symfony-deserialize-json-to-an-array-of-entities
+[18]: http://api.symfony.com/2.0/classes.html
